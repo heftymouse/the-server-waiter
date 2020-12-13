@@ -17,9 +17,9 @@ import json
 #import unicodedata
 
 with open('config.json', 'r') as d:
-    cfg = json.loads(d)
+    cfg = json.load(d)
 
-TOKEN = cfg["token"] 
+TOKEN = cfg['token'] 
 GUILD = 'Freework'
 
 bot = discord.Client()
@@ -67,7 +67,7 @@ async def on_message(message):
     if message.content.startswith('make coffee'):
         await message.channel.send('here is your coffee :coffee: !')
    
-    bad_words = cfg["bad-words"]
+    bad_words = cfg['bad-words']
 
     words = message.content.split()
     words_count = len(words)
@@ -264,8 +264,9 @@ async def delete_request(ctx, id: int):
     msg = await channel_name.fetch_message(id)
     await msg.delete()
     await ctx.channel.send('Request deleted !')'''
-    ctx.channel.send('Command not implemented yet, in the meanwhile ask <@449327117885505550> to delete your request.')
-
+    await ctx.channel.send('Command not implemented yet, in the meanwhile ask <@449327117885505550> to delete your request.')
+    pass
+                           
 @bot.command()
 async def colors(ctx):
     embed = discord.Embed(title = "Some nice colors :", description = "#b62828 \n #d57211 \n #ffce00 \n #ffee2d \n #36395a \n ***For reviewing the colors type \'>review_color\' and type the hex code*** \n EX : >review_color #d57211 \n for more hex colors check out : https://www.w3schools.com/Colors/colors_picker.asp", color = 0xb62828)
